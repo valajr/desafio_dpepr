@@ -82,8 +82,10 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           } else {
-            return Padding(
+            return Container(
+              color: Color.fromARGB(50, 23, 181, 238),
               padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.all(25.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -167,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Preço do m² do tapete em forma de $selectedShape: R\$ $price',
+                      'm² do tapete em forma de $selectedShape: R\$ $price',
                       style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(height: 20),
