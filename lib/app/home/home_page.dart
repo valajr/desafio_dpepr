@@ -21,6 +21,8 @@ class _HomePageState extends State<HomePage> {
   String selectedShape = 'Círculo';
   double side1 = 0.0;
   double side2 = 0.0;
+  double price = 0.0;
+  double area = 0.0;
   double result = 0.0;
 
   @override
@@ -136,15 +138,28 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
+                        // price = 0.0;
+                        // area = 0.0;
+                        // result = 0.0;
                         if (_formKey.currentState!.validate()) {
                           setState(() {
                             if (selectedShape == 'Círculo') {
-                              result = 3.14 * side1 * side1 * (store.state.value[1].price);
+                              price = store.state.value[1].price;
+                              area = 3.14 * side1 * side1;
+                              result = price * area;
                             } else if (selectedShape == 'Retângulo') {
-                              result = side1 * side2 * (store.state.value[2].price);
+                              price = store.state.value[2].price;
+                              area = 3.14 * side1 * side1;
+                              result = price * area;
                             } else if (selectedShape == 'Triângulo') {
-                              result = 0.5 * side1 * side2 * (store.state.value[0].price);
+                              price = store.state.value[0].price;
+                              area = 3.14 * side1 * side1;
+                              result = price * area;
                             }
+                            
+                            price = num.parse(price.toStringAsFixed(2)).toDouble();
+                            area = num.parse(area.toStringAsFixed(2)).toDouble();
+                            result = num.parse(result.toStringAsFixed(2)).toDouble();
                           });
                         }
                       },
@@ -152,7 +167,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Preço do tapete: $result',
+                      'Preço do m² do tapete em forma de $selectedShape: R\$ $price',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Área do tapete: $area m²',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Preço do tapete: R\$ $result',
                       style: TextStyle(fontSize: 18),
                     ),
                   ],
